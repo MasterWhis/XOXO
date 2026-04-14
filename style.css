@@ -1,7 +1,6 @@
 *{
     box-sizing: border-box;
 }
-
 .cell{
     width: 75px;
     height: 75px;
@@ -23,6 +22,7 @@
     grid-template-columns: repeat(3, auto);
     width: 225px;
     margin: auto;
+    box-shadow: 5px 0px 2px 2px gray;
 }
 .input-container{
     margin-top: 30px;
@@ -34,11 +34,39 @@
     align-self: center;
 }
 .play-game{
-    width: 50px;
     align-self: center;
+    width: 10vh;
+    height: 6vh;
+    border-radius: 12px 20px;
+    background-color: teal;
+    color: white;
+    font-weight: 900;
+    font-size: large;
+    border: 0;
+}
+.play-game:hover{
+    box-shadow: 2px 2px gray;;
+    width: 8vh;
+    height: 6vh;
 }
 button[type]{
-    width: 50px;
-    height: 20px;
+    width: 7vh;
+    border-radius: 12px;
+    background-color: crimson;
+    color: white;
+    font-weight: 600;
+    border: 0;
+    height: 3vh;
+    box-shadow: 2px 2px 2px 2px gray;
 
+}
+
+input{
+    border: 3px solid;
+    background-color: lightblue;
+    border-radius: 10px;
+    height: 2em;
+    padding: 10px;
+    box-shadow: 2px 2px 2px gray;
+    color: white;
 }
