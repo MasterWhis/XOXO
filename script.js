@@ -42,7 +42,6 @@ document.getElementById('mySubmit').onclick = function(){
     console.log(playerTwoName)
     playerOne = Player(playerOneName, 'X');
     playerTwo = Player(playerTwoName, 'O');
-
     const cells = document.querySelectorAll('.cell')
     cells.forEach(cell => cell.style.pointerEvents = 'auto');
 }
@@ -56,7 +55,6 @@ const GameController =(() => {
 
     let currentPlayer = 'X'
     let gameOver = false;
-    const statusText = document.querySelector('.status-text');
     function playRound(index){
         if(!playerOne || !playerTwo) return
         if (gameOver) return
@@ -64,17 +62,17 @@ const GameController =(() => {
         
         if(checkWinner()){
             gameOver = true;
-            
-            statusText.textContent = `${playerOne.name}: ${playerOne.score}, ${playerTwo.name}: ${playerTwo.score}`;
-
+            DisplayController.statusRender()
             if(playerOne.score === 5){
                 playerTwo.score = 0;
                 playerOne.score = 0;
-                alert(`${playerOne} has won!`);             
+                alert(`${playerOne.name} has won!`);
+                DisplayController.statusRender();           
             } else if(playerTwo.score === 5){
                 playerTwo.score = 0;
                 playerOne.score = 0;
-                alert(`${playerTwo} has won!`);
+                alert(`${playerTwo.name} has won!`);
+                DisplayController.statusRender();
             }
             reset()
         };
@@ -128,10 +126,13 @@ const GameController =(() => {
 const DisplayController =(() => {
     const playBtn = document.querySelector('.play-game');
     const cells = document.querySelectorAll('.cell');
-    
+    const statusText = document.querySelector('.status-text');
     cells.forEach(cell => cell.style.pointerEvents = 'none');
     cellClicked()
 
+    function statusRender(){
+    statusText.textContent = `${playerOne.name}: ${playerOne.score}, ${playerTwo.name}: ${playerTwo.score}`;
+}
 
     function cellClicked(){    
         cells.forEach((cell) => {
@@ -155,6 +156,9 @@ const DisplayController =(() => {
     return {
         cellClicked(){
             cellClicked()
+        },
+        statusRender(){
+            statusRender()
         }
     }
     
